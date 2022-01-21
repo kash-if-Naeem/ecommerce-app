@@ -10,18 +10,19 @@ function App() {
   const isAuth = useSelector(state => state.auth.isAuth)
   console.log(isAuth);
   return (
-    
+    <>
       <Routes>
         <Route path='/' element={<Login />} />
-      
+
         {isAuth && (
           <Route path='/dashboard' element={<Dashboard />} />
         )}
-        
+
         <Route path='*' element={<Navigate to={isAuth ? '/dashboard' : '/'} />} />
 
       </Routes>
-    
+    </>
+
   );
 }
 

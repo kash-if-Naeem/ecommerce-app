@@ -1,7 +1,13 @@
+import Body from "./Body/Body"
+import Footer from "./Footer/Footer"
+import Header from "./Navbar"
+
 const Dashboard = () => {
     return (
         <>
-            <h1>Logged In</h1>
+            <Header />
+            <Body />
+            <Footer />
         </>
     )
 }
