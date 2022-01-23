@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { authActions } from '../../store/loginSlice'
 import Tooltip from '@mui/material/Tooltip';
@@ -24,6 +24,8 @@ export default function PrimarySearchAppBar() {
   const showCartHandler = () => {
     dispatch(cartVisibilityActions.toggle())
   }
+
+  const cartBatchQuantity = useSelector(state => state.cart.totalQuantity)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -48,7 +50,7 @@ export default function PrimarySearchAppBar() {
                 color="inherit"
                 onClick={showCartHandler}
               >
-                <Badge badgeContent={17} color="error">
+                <Badge badgeContent={cartBatchQuantity === 0 ? '0' : cartBatchQuantity} color="error">
                   <Cart />
                 </Badge>
               </IconButton>

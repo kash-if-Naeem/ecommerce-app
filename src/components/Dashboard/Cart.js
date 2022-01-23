@@ -19,6 +19,8 @@ const style = {
 
 export default function BasicModal() {
     const showCart = useSelector(state => state.cartVisibility.cartIsVisible)
+    const cartItem = useSelector(state => state.cart.items)
+    console.log({cartItem})
 
   return (
     <div>
@@ -29,6 +31,9 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          
+              
+            
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
           </Typography>

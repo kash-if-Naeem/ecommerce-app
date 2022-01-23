@@ -6,6 +6,8 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { styled } from '@mui/material/styles';
 import itemData from './CollectionData'
 import Tooltip from '@mui/material/Tooltip';
+import { cartActions } from '../../../store/cartSlice'
+import { useDispatch } from 'react-redux'
 
 const ImageGalleryList = styled('ul')(({ theme }) => ({
   display: 'grid',
@@ -24,6 +26,12 @@ const ImageGalleryList = styled('ul')(({ theme }) => ({
 }));
 
 export default function TitlebarImageList() {
+  const dispatch = useDispatch()
+  const cartQuatityHandler = () => {
+    dispatch(cartActions.addItemToCart({
+    }))
+  }
+
   return (
     <ImageGalleryList >
 
@@ -42,7 +50,7 @@ export default function TitlebarImageList() {
               <Tooltip title="Add to Cart" arrow>
                 <IconButton
                   sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                  
+                  onClick={cartQuatityHandler}
                 >
                   <AddShoppingCartIcon />
                 </IconButton>
