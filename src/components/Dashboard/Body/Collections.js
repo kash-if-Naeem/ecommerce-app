@@ -27,21 +27,28 @@ const ImageGalleryList = styled('ul')(({ theme }) => ({
 
 export default function TitlebarImageList() {
   const dispatch = useDispatch()
-  const cartQuatityHandler = () => {
+  const cartQuatityHandler = (item) => {
     dispatch(cartActions.addItemToCart({
+      id: item.id,
+      title: item.title,
+      price: item.price
     }))
   }
+
+  const showDescription = () => console.log('hello')
 
   return (
     <ImageGalleryList >
 
       {itemData.map((item) => (
+        
         <ImageListItem key={item.img} sx={{'&:hover': {transform: "scale3d(1.05, 1.05, 1)"}, cursor:'pointer'}}>
           <img
             src={`${item.img}?w=248&fit=crop&auto=format`}
             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
             alt={item.title}
             loading="lazy"
+            onClick={showDescription}
           />
           <ImageListItemBar
             title={item.title}
@@ -50,7 +57,7 @@ export default function TitlebarImageList() {
               <Tooltip title="Add to Cart" arrow>
                 <IconButton
                   sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                  onClick={cartQuatityHandler}
+                  onClick={() => cartQuatityHandler(item)}
                 >
                   <AddShoppingCartIcon />
                 </IconButton>

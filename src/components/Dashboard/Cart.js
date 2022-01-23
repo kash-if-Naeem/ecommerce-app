@@ -1,9 +1,13 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+import {Box, ListItemButton} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import { cartActions } from '../../store/cartSlice';
 
 const style = {
   position: 'absolute',
@@ -20,7 +24,23 @@ const style = {
 export default function BasicModal() {
     const showCart = useSelector(state => state.cartVisibility.cartIsVisible)
     const cartItem = useSelector(state => state.cart.items)
-    console.log({cartItem})
+    console.log({showCart})
+
+    const dispatch = useDispatch();
+    const removeItemHandler = (value) => {
+      dispatch(cartActions.removeItemFromCart(value.id));
+    };
+
+    const addItemHandler = (value) => {
+      dispatch(
+        cartActions.addItemToCart({
+          id:value.id,
+          title:value.title,
+          price:value.price,
+        })
+      );
+    };
+  
 
   return (
     <div>
@@ -31,15 +51,25 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <Typography component='h2' variant='h5'>
+            My Shopping Cart
+          </Typography>
           
-              
-            
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+              {cartItem.map((value) => (
+                
+                <ListItem
+                  key={value.id}
+                  disableGutters
+                  secondaryAction={`$${value.totalPrice} ($${value.price} / item)`}
+                >
+                  <ListItemText primary={value.name} />
+                <ListItemButton sx={{position:'fixed', right:'0%'}} onClick={() => addItemHandler(value)}>+</ListItemButton>
+                <ListItemButton sx={{position:'fixed', right:'35%'}} onClick={() => removeItemHandler(value)}>-</ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          
         </Box>
       </Modal>
     </div>
