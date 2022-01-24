@@ -16,6 +16,9 @@ const ImageGalleryList = styled('ul')(({ theme }) => ({
   padding: 0,
   gap: 12,
 
+  [theme.breakpoints.up('xs')]: {
+    gridTemplateColumns: 'repeat(2, 1fr)'
+  },
   [theme.breakpoints.up('sm')]: {
     gridTemplateColumns: 'repeat(2, 1fr)'
   },

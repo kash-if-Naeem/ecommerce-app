@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { authActions } from '../../store/loginSlice'
 import Tooltip from '@mui/material/Tooltip';
-// import { cartVisibilityActions } from '../../store/cartVisibilitySlice';
 import Cart from './Cart'
 
 export default function PrimarySearchAppBar() {
@@ -27,17 +26,23 @@ export default function PrimarySearchAppBar() {
 
   const cartBatchQuantity = useSelector(state => state.cart.totalQuantity)
 
+  const navigateToHome = () => {
+    navigate('/dashboard')
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-      
+
         <Toolbar>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ fontFamily: 'Dancing Script' }}
+            sx={{ fontFamily: 'Dancing Script', cursor:"pointer" }}
+            onClick={navigateToHome}
           >
+
             Shopee
           </Typography>
 
@@ -48,14 +53,14 @@ export default function PrimarySearchAppBar() {
                 size="large"
                 aria-label="show 17 new notifications"
                 color="inherit"
-                // onClick={showCartHandler}
+              // onClick={showCartHandler}
               >
                 <Badge badgeContent={cartBatchQuantity === 0 ? '0' : cartBatchQuantity} color="error">
                   <Cart />
                 </Badge>
               </IconButton>
             </Tooltip>
-            
+
             <Tooltip title="Logout" arrow>
               <IconButton
                 size="large"
@@ -65,7 +70,7 @@ export default function PrimarySearchAppBar() {
                 color="inherit"
                 onClick={logoutHandler}
               >
-                <LogoutIcon  />
+                <LogoutIcon />
               </IconButton>
             </Tooltip>
           </Box>
