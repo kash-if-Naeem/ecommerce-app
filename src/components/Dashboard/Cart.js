@@ -8,7 +8,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { cartActions } from '../../store/cartSlice';
-import { cartVisibilityActions } from '../../store/cartVisibilitySlice';
+// import { cartVisibilityActions } from '../../store/cartVisibilitySlice';
 
 const style = {
   position: 'absolute',
@@ -23,9 +23,12 @@ const style = {
 };
 
 export default function BasicModal() {
-  const showCart = useSelector(state => state.cartVisibility.cartIsVisible)
+  // const showCart = useSelector(state => state.cartVisibility.cartIsVisible)
   const cartItem = useSelector(state => state.cart.items)
-  console.log({ showCart })
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const dispatch = useDispatch();
   const removeItemHandler = (value) => {
@@ -45,9 +48,10 @@ export default function BasicModal() {
 
   return (
     <div>
-      <ShoppingCartOutlinedIcon />
+      <ShoppingCartOutlinedIcon onClick={handleOpen} />
       <Modal
-        open={showCart}
+        open={open}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
