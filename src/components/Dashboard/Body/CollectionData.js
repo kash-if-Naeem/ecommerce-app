@@ -5,7 +5,7 @@ const itemData = [
         price: 12,
         id: 'p1',
         quantity: 1, 
-        description: '1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita?'
+        description: '1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita?'
     },
     {
         img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
@@ -13,7 +13,7 @@ const itemData = [
         price: 15,
         id: 'p2',
         quantity: 1,
-        description: '2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita?'
+        description: '2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita?'
     },
     {
         img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
@@ -21,7 +21,7 @@ const itemData = [
         price: 20,
         id: 'p3',
         quantity: 1,
-        description: '3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita?'
+        description: '3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita?'
     },
     {
         img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
@@ -29,7 +29,7 @@ const itemData = [
         price: 30,
         id: 'p4',
         quantity: 1,
-        description: '4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita?'
+        description: '4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, expedita?'
     },
 ];
 

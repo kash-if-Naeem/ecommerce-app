@@ -8,12 +8,14 @@ import itemData from './CollectionData'
 import Tooltip from '@mui/material/Tooltip';
 import { cartActions } from '../../../store/cartSlice'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { descriptionActions } from '../../../store/productDescriptionSlice';
 
 const ImageGalleryList = styled('ul')(({ theme }) => ({
   display: 'grid',
   padding: 0,
   gap: 12,
-  
+
   [theme.breakpoints.up('sm')]: {
     gridTemplateColumns: 'repeat(2, 1fr)'
   },
@@ -35,24 +37,36 @@ export default function TitlebarImageList() {
     }))
   }
 
-  const showDescription = () => console.log('hello')
+  const navigate = useNavigate()
+  const navigateToProductDescription = (item) => {
+    dispatch(descriptionActions.showDescription({
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      description: item.description,
+      img: item.img
+    }))
+    navigate('/description')
+  }
 
   return (
     <ImageGalleryList >
 
       {itemData.map((item) => (
-        
-        <ImageListItem key={item.img} sx={{'&:hover': {transform: "scale3d(1.05, 1.05, 1)"}, cursor:'pointer'}}>
+
+        <ImageListItem key={item.id}
+          sx={{ '&:hover': { transform: "scale3d(1.05, 1.05, 1)" }, cursor: 'pointer' }}
+        >
           <img
             src={`${item.img}?w=248&fit=crop&auto=format`}
             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
             alt={item.title}
             loading="lazy"
-            onClick={showDescription}
+            onClick={() => navigateToProductDescription(item)}
           />
           <ImageListItemBar
             title={item.title}
-            subtitle={item.price}
+            subtitle={`$${item.price}`}
             actionIcon={
               <Tooltip title="Add to Cart" arrow>
                 <IconButton

@@ -5,10 +5,12 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import store from './store/index'
 import { BrowserRouter } from 'react-router-dom'
+import { CssBaseline } from '@material-ui/core';
 
 ReactDOM.render(
-
   <Provider store={store}>
+  <CssBaseline />
+
     <BrowserRouter>
       <App />
     </BrowserRouter>
